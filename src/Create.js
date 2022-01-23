@@ -5,8 +5,10 @@ import { useRef } from 'react';
 import axios from "./axios";
 import { useForm } from "react-hook-form";
 import {UploadButton} from "./Photos.js"
+import { useNavigate} from "react-router-dom";
 
-export default function Books() {
+
+export default function Create() {
     const [name, setName] = useState("");
 
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function Books() {
     // const handleSubmit = () => {
     //     console.log(name)
     // }
-
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         // async function createData(data) {
@@ -35,11 +37,11 @@ export default function Books() {
         // }
          
         const params = new FormData();
+        params.append(
+            'image', 
+            postFileData.image ? postFileData.image : ''
+        );
         Object.keys(data).forEach(function(key) {
-            params.append(
-                'image', 
-                postFileData.image ? postFileData.image : ''
-            );
             params.append(
                 key, 
                 data[key]
@@ -60,18 +62,20 @@ export default function Books() {
         //     },
         // });
 
-        axios.post("/create/person", params, {
+        // axios.post("/create/person", data, {  // request payload
+        axios.post("/create/person", params, {  // form data
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
             })
             .then((response) => {
+                navigate('/')
                 console.log(response)
             })
             .catch((error) => {
-                console.log("ここ", error)
+                console.log("/create/person post エラー", error)
             })
-        console.log(data)
+        // console.log(data)
         // axios.post(`http://localhost:8080/create/person`, { data })
         // .then(res => {
         //     console.log(res);

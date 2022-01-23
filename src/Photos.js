@@ -9,7 +9,7 @@ const useUploadButtonStyles = makeStyles((theme) =>
   })
 );
 export const UploadButton = (props) => {
-    console.log("props name: ", props.name);
+    // console.log("props name: ", props.name);
   const classes = useUploadButtonStyles();
   return (
     <label htmlFor={`upload-button-${props.name}`}>
