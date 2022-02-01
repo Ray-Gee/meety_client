@@ -23,8 +23,6 @@ var global = (function() {
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
-var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
-goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.messenger.MessageRequest', null, global);
 goog.exportSymbol('proto.messenger.MessageResponse', null, global);
 /**
@@ -101,9 +99,7 @@ proto.messenger.MessageRequest.prototype.toObject = function(opt_includeInstance
  */
 proto.messenger.MessageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    message: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    createdat: (f = msg.getCreatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    message: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -142,16 +138,7 @@ proto.messenger.MessageRequest.deserializeBinaryFromReader = function(msg, reade
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
       msg.setMessage(value);
-      break;
-    case 3:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setCreatedat(value);
       break;
     default:
       reader.skipField();
@@ -182,36 +169,21 @@ proto.messenger.MessageRequest.prototype.serializeBinary = function() {
  */
 proto.messenger.MessageRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getName();
+  f = message.getMessage();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getMessage();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-  f = message.getCreatedat();
-  if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-    );
-  }
 };
 
 
 /**
- * optional string name = 1;
+ * optional string message = 1;
  * @return {string}
  */
-proto.messenger.MessageRequest.prototype.getName = function() {
+proto.messenger.MessageRequest.prototype.getMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -220,63 +192,8 @@ proto.messenger.MessageRequest.prototype.getName = function() {
  * @param {string} value
  * @return {!proto.messenger.MessageRequest} returns this
  */
-proto.messenger.MessageRequest.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string message = 2;
- * @return {string}
- */
-proto.messenger.MessageRequest.prototype.getMessage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.messenger.MessageRequest} returns this
- */
 proto.messenger.MessageRequest.prototype.setMessage = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional google.protobuf.Timestamp createdAt = 3;
- * @return {?proto.google.protobuf.Timestamp}
- */
-proto.messenger.MessageRequest.prototype.getCreatedat = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.messenger.MessageRequest} returns this
-*/
-proto.messenger.MessageRequest.prototype.setCreatedat = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.messenger.MessageRequest} returns this
- */
-proto.messenger.MessageRequest.prototype.clearCreatedat = function() {
-  return this.setCreatedat(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.messenger.MessageRequest.prototype.hasCreatedat = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -312,8 +229,7 @@ proto.messenger.MessageResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.messenger.MessageResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    result: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
-    message: jspb.Message.getFieldWithDefault(msg, 2, "")
+    message: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -351,10 +267,6 @@ proto.messenger.MessageResponse.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setResult(value);
-      break;
-    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setMessage(value);
       break;
@@ -387,47 +299,22 @@ proto.messenger.MessageResponse.prototype.serializeBinary = function() {
  */
 proto.messenger.MessageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getResult();
-  if (f) {
-    writer.writeBool(
+  f = message.getMessage();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
   }
-  f = message.getMessage();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
 };
 
 
 /**
- * optional bool result = 1;
- * @return {boolean}
- */
-proto.messenger.MessageResponse.prototype.getResult = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.messenger.MessageResponse} returns this
- */
-proto.messenger.MessageResponse.prototype.setResult = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
-};
-
-
-/**
- * optional string message = 2;
+ * optional string message = 1;
  * @return {string}
  */
 proto.messenger.MessageResponse.prototype.getMessage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
@@ -436,7 +323,7 @@ proto.messenger.MessageResponse.prototype.getMessage = function() {
  * @return {!proto.messenger.MessageResponse} returns this
  */
 proto.messenger.MessageResponse.prototype.setMessage = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

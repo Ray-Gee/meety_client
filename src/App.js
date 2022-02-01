@@ -6,7 +6,9 @@ import Login from "./Login.js"
 import Create from "./Create.js"
 import Navbar from './Navbar';
 import Detail from './Detail.js';
-import MessagesIndex from './components/messages_index.js';
+import Chat from "./Chat.js";
+import { MessagesContainer } from './containers/Messages/index.js';
+import {gRPCClients} from "./gRPCClients.js"
 
 function App() {
   
@@ -16,20 +18,16 @@ function App() {
   //   ]);
   //   return routes;
   // };
-console.log("hi");
-
   return (
     <BrowserRouter>
+    <h1>hi</h1>
       <Navbar />
       <Routes>
-        {/* <Switch> */}
-        <Route exact path="/messages" element={<MessagesIndex/>} />
-        <Route exact path="/login" element={<Login/>} />
+        <Route exact path="/chat" element={<MessagesContainer clients={gRPCClients} />} />
+        {/* <Route exact path="/login" element={<Login/>} />
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/create" element={<Create/>} />
-        <Route path="/detail/:id" element={<Detail/>} />
-        {/* <Routing /> */}
-        {/* </Switch> */}
+        <Route path="/detail/:id" element={<Detail/>} /> */}
       </Routes>
     </BrowserRouter>
   );
