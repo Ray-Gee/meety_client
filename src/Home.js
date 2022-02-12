@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from "./axios";
+// import axios from "./axios";
+import axios from "axios";
 import { css, cx } from "@emotion/css";
 import { Link } from 'react-router-dom';
 
@@ -71,10 +72,18 @@ export default function Home() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get("/people");
+            // const response = await axios.get("/people");
+            console.log("Home画面")
+            let response = ""
+            try {
+                response = await axios.get("http://localhost:9090/people");
+            } catch (e) {
+                console.log('エラー発生', e['config']);
+                return;
+            }
             // let data = response.data.slice(0, 10)
 
-            console.log(response.data)
+            // console.log("Home画面", response.data)
             setPeople(response.data);
             // setPeople(data);
             // return response;

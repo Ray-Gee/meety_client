@@ -18,6 +18,7 @@ export const useMessageForm = (client) => {
       event.preventDefault();
       const req = new MessageRequest();
       req.setMessage(message);
+      console.log("onSubmit:", req);
       client.createMessage(req, null, res => console.log("ここです", res));
       setMessage("");
     },

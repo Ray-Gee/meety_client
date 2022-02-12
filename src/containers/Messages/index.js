@@ -18,8 +18,8 @@ export const MessagesContainer = ({ clients }) => {
   const messagesState = useMessages(client);
   const messageFormState = useMessageForm(client);
   // console.log("clients: ", clients)
-  // console.log("...messageFormState: ", {...messageFormState})
-  // console.log("...messagesState: ", {...messagesState})
+  console.log("...messageFormState: ", {...messageFormState})
+  console.log("...messagesState: ", {...messagesState})
   // console.log("messengerClient: ", messengerClient)
   return (
     <div>

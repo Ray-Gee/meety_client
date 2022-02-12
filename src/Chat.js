@@ -4,7 +4,7 @@ import { MessengerClient } from "./messenger/MessengerServiceClientPb.ts";
 
 export const useMessages = (client) => {
   const [messages, setMessages] = useState([]);
-
+console.log("chat");
   useEffect(() => {
     const stream$ = client.getMessages(new Empty());
     stream$.on("data", m => {
