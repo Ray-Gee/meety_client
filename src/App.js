@@ -6,8 +6,8 @@ import Login from "./Login.js"
 import Create from "./Create.js"
 import Navbar from './Navbar';
 import Detail from './Detail.js';
-import { MessagesContainer } from './containers/Messages/index.js';
-import {gRPCClients} from "./gRPCClients.js"
+// import { MessagesContainer } from './containers/Messages/index.js';
+// import {gRPCClients} from "./gRPCClients.js"
 
 function App() {
   
@@ -22,9 +22,9 @@ function App() {
     <h1>hi</h1>
       <Navbar />
       <Routes>
-        <Route exact path="/chat" element={<MessagesContainer clients={gRPCClients} />} />
-        <Route exact path="/login" element={<Login/>} />
+        {/* <Route exact path="/chat" element={<MessagesContainer clients={gRPCClients} />} /> */}
         <Route exact path="/" element={<Home/>} />
+        <Route exact path="/login" element={<Login/>} />
         <Route exact path="/create" element={<Create/>} />
         <Route path="/detail/:id" element={<Detail/>} />
       </Routes>
